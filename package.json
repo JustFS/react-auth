@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.0.3",
+    "firebase": "^7.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-firebaseui": "^4.1.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
