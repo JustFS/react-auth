@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import IsSignIn from './components/IsSignIn';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCVPb5Wkan3Ma6shPRxV89ilDB7wrlN0yE",
@@ -35,13 +36,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.isSignedIn ? (
-          <span>
-            <div>Signed In!</div>
-            <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <img alt="user-pic" src={firebase.auth().currentUser.photoURL}
-            />
-          </span>
+          <IsSignIn />
         ) : (
           <StyledFirebaseAuth
             uiConfig={this.uiConfig}
