@@ -1,51 +1,46 @@
-import React, { Component } from 'react';
-import firebase from 'firebase';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import IsSignIn from './components/IsSignIn';
+import React, { useState, useEffect } from "react";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import firebase from "./utils/firebaseConfig";
+import Main from "./components/Main";
 
-firebase.initializeApp({
-  apiKey: "AIzaSyCVPb5Wkan3Ma6shPRxV89ilDB7wrlN0yE",
-  authDomain: "react-auth-4f668.firebaseapp.com"
-})
+const App = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-class App extends Component {
-  state = {
-    isSignedIn: false
-  }
-  uiConfig = {
+  const uiConfig = {
     signInFlow: "popup",
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
       firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
-      signInSuccess: () => false
-    }
-  }
+      signInSuccess: () => false,
+    },
+  };
 
-  componentDidMount = () => {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({ isSignedIn: !!user })
-      console.log("user", user)
-    })
-  }
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      setIsSignedIn(!!user);
+      console.log(user);
+    });
+  }, []);
 
-  render() {
-    return (
-      <div className="App">
-        {this.state.isSignedIn ? (
-          <IsSignIn />
-        ) : (
+  return (
+    <div className="App" style={{textAlign: 'center'}}>
+      {isSignedIn ? (
+        <Main />
+      ) : (
+        <div className="login-page">
+          <h1>React Crud</h1>
           <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
+            uiConfig={uiConfig}
             firebaseAuth={firebase.auth()}
           />
-        )}
-      </div>
-    )
-  }
-}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default App;
