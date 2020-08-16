@@ -9,8 +9,7 @@ const Main = () => {
         <h4>Bonjour {firebase.auth().currentUser.displayName}</h4>
         <div onClick={() => firebase.auth().signOut()}>Se déconnecter</div>
       </nav>
-
-      {/* app */}
+      {/* app component */}
     </main>
   );
 };

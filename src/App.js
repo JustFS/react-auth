@@ -21,6 +21,7 @@ const App = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+      // !! ensure boolean
       setIsSignedIn(!!user);
       console.log(user);
     });
