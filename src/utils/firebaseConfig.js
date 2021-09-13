@@ -1,15 +1,19 @@
 import firebase from 'firebase';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCVPb5Wkan3Ma6shPRxV89ilDB7wrlN0yE",
-  authDomain: "react-auth-4f668.firebaseapp.com",
+   apiKey: 'AIzaSyAzyylGW0YBh97eiVxXTXAqldo95BNifKg',
+   authDomain: 'react-video-authen.firebaseapp.com',
 
-  // databaseURL: "ht tps://react-auth-4f668.firebaseio.com",
-  // projectId: "react-auth-4f668",
-  // storageBucket: "react-auth-4f668.appspot.com",
-  // messagingSenderId: "133314651046",
-  // appId: "1:133314651046:web:353807c7bd784eb7346567",
-  // measurementId: "G-EHS1EER2GK"
+   databaseURL:
+      'https://react-video-authen-default-rtdb.europe-west1.firebasedatabase.app',
+
+   projectId: 'react-video-authen',
+
+   storageBucket: 'react-video-authen.appspot.com',
+
+   messagingSenderId: '1005720071337',
+
+   appId: '1:1005720071337:web:3fa14117ce3e9fe09f0db8',
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
